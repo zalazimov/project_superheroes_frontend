@@ -1,0 +1,27 @@
+/* .navbar {
+  padding: 4rem 0rem;
+  height: 70px;
+}
+
+.nav-link img {
+  max-width: 100%;
+  max-height: 70%;
+} */
+
+.navbar {
+  background-color: #303030;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.home:hover {
+  transform: scale(1.2);
+}
+.index:hover {
+  transform: scale(1.2);
+}
+.addhero:hover {
+  transform: scale(1.2);
+}

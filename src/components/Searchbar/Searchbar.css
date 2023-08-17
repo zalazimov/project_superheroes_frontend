@@ -1,0 +1,21 @@
+.searchbar {
+  background-color: #43869b;
+  color: #757575;
+  border: 1px solid #ccc;
+  /* padding: 8px; */
+  border-radius: 5px;
+  border-color: #ffde59;
+  height: 3rem;
+  font-size: 14px;
+  padding: 3px 55px;
+}
+
+.search-button {
+  padding: 0.5rem; /* Adjust as needed */
+  border-radius: 5px; /* Maintain rounded corners */
+  background-color: #f8f9fa; /* Background color */
+  border: 1px solid #ffde59; /* Border color */
+}
+/* .btn {
+  padding: 2px;
+} */

@@ -1,7 +1,14 @@
 import React from "react";
+import Spinner from "./Spinner";
+import "./Overlay.css";
 
-function Overlay() {
-  return <div>Overlay</div>;
+function Overlay({ children, isLoading }) {
+  return (
+    <>
+      {isLoading && <Spinner />}
+      {children}
+    </>
+  );
 }
 
 export default Overlay;
