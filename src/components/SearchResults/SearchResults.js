@@ -26,6 +26,23 @@ function SearchResults() {
     }
   }
 
+  const ImageWithFallback = ({ src, alt }) => {
+    const handleImageError = (e) => {
+      e.target.src = poster();
+    };
+
+    return (
+      <img
+        src={src}
+        alt={alt}
+        height="250px"
+        width="180px"
+        className="rounded-1"
+        onError={handleImageError}
+      />
+    );
+  };
+
   useEffect(() => {
     setIsLoading(true);
     setResults(null);
@@ -43,13 +60,12 @@ function SearchResults() {
 
   const comicTextStyle = {
     fontFamily: "Comic Sans MS, cursive, sans-serif",
-    // fontSize: "1.5rem",
     color: "#ffde59",
   };
 
   return (
     <Overlay isLoading={isLoading}>
-      <div className="container my-4 min-vh-100">
+      <div className="container my-4 min-vh-100 results-section">
         <section className="row text-center mt-5 results-section">
           <header>
             {results && (
@@ -62,8 +78,8 @@ function SearchResults() {
 
           {results &&
             results
-              .slice(0, results.length > 32 ? 32 : results.length)
-              .map((hero) => {
+              .slice(0, results.length > 16 ? 16 : results.length)
+              .map((hero, index) => {
                 return (
                   <div
                     key={hero.id}
@@ -74,17 +90,12 @@ function SearchResults() {
                       style={comicTextStyle}
                       to={`/heroes/${hero.id}`}
                     >
-                      <img
-                        src={
-                          hero.img
-                            ? `https://www.superherodb.com/${hero.img}`
-                            : poster()
-                        }
-                        alt={hero.name}
-                        height="250px"
-                        width="180px"
-                        className="rounded-1"
-                      ></img>
+                      <ImageWithFallback
+                        key={index}
+                        src={`https://www.superherodb.com${hero.img}`}
+                        alt={`Image ${index}`}
+                      />
+
                       <p className="mt-1 fs-6">{hero.name}</p>
                     </Link>
                   </div>

@@ -4,7 +4,7 @@ import "./Spinner.css";
 function Spinner() {
   return (
     <div>
-      <body>
+      <section>
         <div className="body">
           <span>
             <span></span>
@@ -14,8 +14,8 @@ function Spinner() {
           </span>
           <div className="hand">
             <span></span>
-            <div class="face"></div>
-            <div class="cowl"></div>
+            <div className="face"></div>
+            <div className="cowl"></div>
           </div>
         </div>
         <div className="speed">
@@ -25,7 +25,7 @@ function Spinner() {
           <span></span>
         </div>
         {/* I may want to add a cool loading message here */}
-      </body>
+      </section>
     </div>
   );
 }
