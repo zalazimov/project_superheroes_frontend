@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { searchbutton } from "../../assests/index";
+import { searchbutton } from "../../assets/index";
 
 import "./Searchbar.css";
 
@@ -26,13 +26,6 @@ function Searchbar() {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button className="btn btn-outline-warning" type="submit">
-        {/* <img
-          src={searchbutton}
-          alt="searchbutton"
-          width="80"
-          
-          className="d-inline-block align-top px-4"
-        /> */}
         Search
       </button>
     </form>

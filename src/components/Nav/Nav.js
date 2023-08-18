@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { logo, homelink, indexlink, addherolink } from "../../assests/index";
+import { logo, homelink, indexlink, addherolink } from "../../assets/index";
 import Searchbar from "../Searchbar/Searchbar";
 import "./Nav.css";
 
@@ -15,7 +15,7 @@ function Nav() {
         <img
           src={logo}
           alt="Logo"
-          height="80" // Adjust the height as needed
+          height="80"
           className="d-inline-block align-top px-4"
         />
       </Link>
@@ -34,7 +34,7 @@ function Nav() {
               <img
                 src={homelink}
                 alt="homelink"
-                height="45" // Adjust the height as needed
+                height="45"
                 className="d-inline-block align-top px-4"
               />
             </Link>
@@ -48,7 +48,7 @@ function Nav() {
               <img
                 src={indexlink}
                 alt="indexlink"
-                height="45" // Adjust the height as needed
+                height="45"
                 className="d-inline-block align-top px-4"
               />
             </Link>
@@ -62,7 +62,7 @@ function Nav() {
               <img
                 src={addherolink}
                 alt="addherolink"
-                height="70" // Adjust the height as needed
+                height="70"
                 className="d-inline-block align-top px-4"
               />
             </Link>

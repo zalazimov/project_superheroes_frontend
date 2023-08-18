@@ -7,6 +7,7 @@ import homelink from "./homelink.png";
 import indexlink from "./indexlink.png";
 import addherolink from "./addherolink.png";
 import searchbutton from "./searchbutton.png";
+import giflLogo from "./giflLogo.gif";
 
 export {
   logo,
@@ -18,4 +19,5 @@ export {
   indexlink,
   addherolink,
   searchbutton,
+  giflLogo,
 };
