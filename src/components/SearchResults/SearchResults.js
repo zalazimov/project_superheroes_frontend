@@ -78,7 +78,7 @@ function SearchResults() {
 
           {results &&
             results
-              .slice(0, results.length > 16 ? 16 : results.length)
+              .slice(0, results.length > 48 ? 48 : results.length)
               .map((hero, index) => {
                 return (
                   <div
