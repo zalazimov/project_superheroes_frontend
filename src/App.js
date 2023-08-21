@@ -11,6 +11,9 @@ function App() {
   const Home = React.lazy(() => import("./components/Home/Home"));
   const Heroes = React.lazy(() => import("./components/Heroes/Heroes"));
   const Hero = React.lazy(() => import("./components/Hero/Hero"));
+  const Index = React.lazy(() =>
+    import("./components/DatabaseIndex/DatabaseIndex")
+  );
   const SearchResults = React.lazy(() =>
     import("./components/SearchResults/SearchResults")
   );
@@ -35,7 +38,7 @@ function App() {
               <Route path="/heroes/:id" element={<Hero />} />
               <Route path="/search" element={<SearchResults />} />
               <Route path="/create" element={<CreateHero />} />
-
+              <Route path="/index" element={<Index />} />
               <Route path="/404" element={<h1>404 Error Not Found</h1>} />
               <Route path="*" element={<h1>404 Error Not Found</h1>} />
             </Routes>

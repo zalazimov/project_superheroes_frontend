@@ -1,22 +1,18 @@
 import { useContext } from "react";
-import axios from "axios";
+import { deleteHeroById } from "../api/api";
 import { FormContext } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
-
-const API = process.env.REACT_APP_API_URL;
 
 function DeleteHero({ name }) {
   const { setShowDel, setShowForm, id } = useContext(FormContext);
   const navigate = useNavigate();
 
-  async function deleteHeroById(id) {
-    try {
-      const result = await axios.delete(`${API}/heroes/${id}`);
-      return result;
-      navigate("/index");
-    } catch (e) {
-      console.log(e);
-    }
+  function handleDelete() {
+    deleteHeroById(id)
+      .then((res) => navigate("/index"))
+      .catch((e) => {
+        console.log(e);
+      });
     setShowDel(false);
     setShowForm(false);
   }
@@ -51,11 +47,7 @@ function DeleteHero({ name }) {
         >
           Cancel
         </button>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={deleteHeroById}
-        >
+        <button type="button" className="btn btn-danger" onClick={handleDelete}>
           Confirm
         </button>
       </div>

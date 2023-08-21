@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { newEntry } from "../api/api";
 import { useNavigate } from "react-router";
 import { validateForm } from "../helper";
 
 import "./CreateHero.css";
-
-const API = process.env.REACT_APP_API_URL;
 
 function CreateHero() {
   let navigate = useNavigate();
@@ -19,7 +17,10 @@ function CreateHero() {
     speed_score: 0,
     power_score: 0,
     combat_score: 0,
-    superpowers: [],
+    superpower_A: "",
+    superpower_B: "",
+    superpower_C: "",
+    superpowers: null,
     aliases: "",
     place_of_birth: "",
     first_appearance: "",
@@ -31,15 +32,6 @@ function CreateHero() {
     img: "",
     is_favorite: false,
   });
-
-  async function newEntry(hero) {
-    try {
-      const result = await axios.post(`${API}/heroes`, hero);
-      return result;
-    } catch (e) {
-      console.log(e);
-    }
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -53,6 +45,18 @@ function CreateHero() {
         return;
       }
 
+      let newArr = [
+        entry["superpower_A"],
+        entry["superpower_B"],
+        entry["superpower_C"],
+      ].filter((item) => item.length > 1);
+
+      delete entry["superpower_A"];
+      delete entry["superpower_B"];
+      delete entry["superpower_C"];
+
+      entry["superpowers"] = JSON.stringify([...new Set(newArr)]);
+
       await newEntry(entry).then((response) => {
         navigate(`/heroes/${response.data.id}`);
       });
@@ -64,10 +68,7 @@ function CreateHero() {
   function handleHeroInput(e) {
     const { name, value, type } = e.target;
 
-    if (name === "superpowers") {
-      const superpowersArray = value.split(",").map((item) => item.trim());
-      setEntry({ ...entry, [name]: superpowersArray });
-    } else if (type === "radio") {
+    if (type === "radio") {
       setEntry({ ...entry, [name]: e.target.value === "true" });
     } else {
       setEntry({ ...entry, [name]: value });
@@ -228,19 +229,54 @@ function CreateHero() {
             <div className="mb-3">
               <label
                 className="fs-5 fw-medium form-label"
-                htmlFor="superpowers"
+                htmlFor="superpower_A"
               >
-                Superpowers
+                Superpower A
               </label>
               <input
                 placeholder="Separate with a comma (ex: Super-strength, Invulnerability, etc.)..."
                 required
                 type="text"
-                name="superpowers"
-                id="superpowers"
+                name="superpower_A"
+                id="superpower_A"
                 className="form-control"
                 onChange={handleHeroInput}
-                value={entry.superpowers}
+                value={entry.superpower_A}
+              />
+            </div>
+            <div className="mb-3">
+              <label
+                className="fs-5 fw-medium form-label"
+                htmlFor="superpower_B"
+              >
+                Superpower B
+              </label>
+              <input
+                placeholder="Separate with a comma (ex: Super-strength, Invulnerability, etc.)..."
+                type="text"
+                name="superpower_B"
+                id="superpower_B"
+                className="form-control"
+                onChange={handleHeroInput}
+                value={entry.superpower_B}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label
+                className="fs-5 fw-medium form-label"
+                htmlFor="superpower_C"
+              >
+                Superpower C
+              </label>
+              <input
+                placeholder="Separate with a comma (ex: Super-strength, Invulnerability, etc.)..."
+                type="text"
+                name="superpower_C"
+                id="superpower_C"
+                className="form-control"
+                onChange={handleHeroInput}
+                value={entry.superpower_C}
               />
             </div>
 
@@ -268,7 +304,6 @@ function CreateHero() {
                 Place of Birth
               </label>
               <input
-                required
                 type="text"
                 name="place_of_birth"
                 id="place_of_birth"
@@ -359,7 +394,6 @@ function CreateHero() {
                 Type/Race
               </label>
               <input
-                required
                 type="text"
                 name="type_race"
                 id="type_race"

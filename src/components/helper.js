@@ -19,13 +19,4 @@ export function poster() {
   ]);
 }
 
-export const validateForm = [
-  "name",
-  "history_text",
-  "superpowers",
-  "aliases",
-  "place_of_birth",
-  "creator",
-  "type_race",
-  "is_favorite",
-];
+export const validateForm = ["name", "history_text", "creator", "is_favorite"];
