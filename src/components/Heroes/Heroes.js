@@ -3,26 +3,14 @@ import { HeroContext } from "../Context/Context";
 import { Link } from "react-router-dom";
 import { fetchHeroesData } from "../api/api";
 
-// import axios from "axios";
-
 import { useNavigate } from "react-router-dom";
 import Overlay from "../../common/Overlay";
-import "./Heroes.css";
 
 function Heroes() {
   const navigate = useNavigate();
   const [heroes, setHeroes] = useState([]);
 
   const { poster, isLoading, setIsLoading } = useContext(HeroContext);
-
-  // async function fetchHeroesData() {
-  //   try {
-  //     const result = await axios.get("http://localhost:3001/heroes");
-  //     return result;
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
 
   const ImageWithFallback = ({ src, alt }) => {
     const handleImageError = (e) => {
@@ -55,8 +43,7 @@ function Heroes() {
             count++;
           }
         }
-        // console.log(res.data);
-        // console.log(randomIndexArr);
+
         setHeroes(() =>
           randomIndexArr.map((item) => {
             return res.data[item];

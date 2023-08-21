@@ -7,7 +7,7 @@ import "./CreateHero.css";
 
 function CreateHero() {
   let navigate = useNavigate();
-  const [selectedOptions, setSelectedOptions] = useState([""]);
+
   const [entry, setEntry] = useState({
     name: "",
     real_name: "",

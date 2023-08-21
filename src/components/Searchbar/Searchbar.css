@@ -11,11 +11,8 @@
 }
 
 .search-button {
-  padding: 0.5rem; /* Adjust as needed */
-  border-radius: 5px; /* Maintain rounded corners */
-  background-color: #f8f9fa; /* Background color */
-  border: 1px solid #ffde59; /* Border color */
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  border: 1px solid #ffde59;
 }
-/* .btn {
-  padding: 2px;
-} */

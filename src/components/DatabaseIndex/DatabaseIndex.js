@@ -49,7 +49,7 @@ function DatabaseIndex() {
                       <th>History</th>
                       <th>Power Description</th>
                       <th>Superpowers</th>
-                      {/* <th>Aliases</th> */}
+
                       <th>First Appearance</th>
                       <th>Creator</th>
                       <th>Occupation</th>
@@ -72,10 +72,7 @@ function DatabaseIndex() {
                           {item.superpowers.length > 0 &&
                             item.superpowers.split(",").slice(0, 20) + "..."}
                         </td>
-                        {/* <td>
-                          {item.aliases &&
-                            item.aliases.split(",").slice(0, 15) + "..."}
-                        </td> */}
+
                         <td>
                           {item.first_appearance && item.first_appearance}
                         </td>

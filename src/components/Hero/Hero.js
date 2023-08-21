@@ -72,23 +72,30 @@ function Hero() {
               {" "}
               <main className="container">
                 <div className="row">
-                  <div className="col-md-6 py-2 px-5">
-                    <div className="">
-                      <h2 className="text-warning">{hero.name}</h2>
-                      <div className="text-warning">
-                        {/* {JSON.stringify(hero.superpowers)} */}
-                        <ul>
-                          {hero.superpowers.map((power, i) => {
-                            return <li key={i}>{power.trim()}</li>;
-                          })}
-                        </ul>
+                  <div className="col-md-6 mx-auto">
+                    <div className="container">
+                      <div className="text-center">
+                        <img
+                          src={
+                            hero.img
+                              ? `https://www.superherodb.com${hero.img}`
+                              : stockposter
+                          }
+                          alt={hero.name}
+                          className="poster img-fluid rounded-1 text-align-center"
+                        />
+
+                        <div className="mt-1 fs-2 text-warning">
+                          {hero.name}
+                        </div>
                       </div>
                     </div>
-
-                    <p className="text-warning">
+                  </div>
+                  <div className="col-md-6 py-2 px-5">
+                    <h5 className="text-warning">
                       <span className="fw-bolder">Real Name</span>:{" "}
                       {hero.real_name || hero.name}
-                    </p>
+                    </h5>
 
                     <h5 className="text-warning">
                       <span className="fw-bolder">Character History</span>:{" "}
@@ -162,6 +169,18 @@ function Hero() {
                     </h5>
 
                     <h5 className="text-warning">
+                      {/* {JSON.stringify(hero.superpowers)} */}
+                      <ul>
+                        <span className="text-weight-semibold fs-3 text-decoration-underline">
+                          Powers and Abilities
+                        </span>
+                        {hero.superpowers.map((power, i) => {
+                          return <li key={i}>{power.trim()}</li>;
+                        })}
+                      </ul>
+                    </h5>
+
+                    <h5 className="text-warning">
                       <span className="fw-bolder">Favorite</span>:{" "}
                       {hero.is_favorite === true ? "⭐️" : ""}
                     </h5>
@@ -179,7 +198,7 @@ function Hero() {
                     </div>
                   </div>
 
-                  <div className="col-md-6 mx-auto">
+                  {/* <div className="col-md-6 mx-auto">
                     <div className="container">
                       <div className="text-center">
                         <img
@@ -195,7 +214,7 @@ function Hero() {
                         <div className="mt-1 text-secondary">{hero.name}</div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </main>{" "}
             </>
