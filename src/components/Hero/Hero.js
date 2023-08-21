@@ -19,6 +19,27 @@ function Hero() {
   const [showDel, setShowDel] = useState(false);
   const navigate = useNavigate();
 
+  const comicTextStyle = {
+    fontFamily: "Comic Sans MS, cursive, sans-serif",
+    color: "#ffde59",
+  };
+
+  const ImageWithFallback = ({ src, alt }) => {
+    const handleImageError = (e) => {
+      e.target.src = poster();
+    };
+
+    return (
+      <img
+        src={src}
+        alt={alt}
+        width="250px"
+        className="rounded-1 img-fluid"
+        onError={handleImageError}
+      />
+    );
+  };
+
   const formContextValue = {
     setHero,
     hero,
@@ -74,8 +95,13 @@ function Hero() {
                 <div className="row">
                   <div className="col-md-6 mx-auto">
                     <div className="container">
-                      <div className="text-center">
-                        <img
+                      <div className="text-center my-3">
+                        <ImageWithFallback
+                          key={id}
+                          src={`https://www.superherodb.com${hero.img}`}
+                          alt={`Image ${id}`}
+                        />
+                        {/* <img
                           src={
                             hero.img
                               ? `https://www.superherodb.com${hero.img}`
@@ -83,7 +109,7 @@ function Hero() {
                           }
                           alt={hero.name}
                           className="poster img-fluid rounded-1 text-align-center"
-                        />
+                        /> */}
 
                         <div className="mt-1 fs-2 text-warning">
                           {hero.name}
@@ -131,9 +157,9 @@ function Hero() {
                       : {hero.combat_score}
                     </h5>
 
-                    <h5 className="text-warning">
+                    {/* <h5 className="text-warning">
                       <span className="fw-bolder">Aliases</span>: {hero.aliases}
-                    </h5>
+                    </h5> */}
 
                     <h5 className="text-warning">
                       <span className="fw-bolder">Place Of Birth</span>:{" "}
